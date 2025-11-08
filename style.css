@@ -4,16 +4,29 @@ body {
     color: #ffffff; /* text-white */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between; /* Pushes header, main, and footer apart */
-    height: 100vh;
+    
+    /* --- FIX 1 --- */
+    /* Changed from `justify-content: space-between;` */
+    /* This lets the content flow naturally from the top. */
+    justify-content: flex-start;
+    
+    /* --- FIX 2 --- */
+    /* Changed from `height: 100vh;` */
+    /* This lets the body be AT LEAST 100% tall, but grow if needed. */
+    min-height: 100vh;
+    
     min-height: 600px; /* Ensures layout doesn't break on short screens */
     padding: 1rem;
     margin: 0;
-    overflow: hidden; /* Hide scrollbars */
+
+    /* --- FIX 3 --- */
+    /* Removed `overflow: hidden;` */
+    /* This will re-enable scrolling on mobile if the content is too tall. */
+    overflow-y: auto;
+
 
     /* --- Background Image (Same as before) --- */
-    background-image: url('The_BG.png');
+    background-image: url('AQIDAH AKHLAQ ADAB.jpg');
     background-size: cover;
     background-position: center center;
     position: relative;
@@ -36,13 +49,14 @@ body::before {
 .page-header {
     width: 100%;
     text-align: center;
-    color: #dee2e8; /* text-gray-400 */
+    color: #9CA3AF; /* text-gray-400 */
     font-weight: 700;
     letter-spacing: 0.05em;
     padding-top: 1rem;
     z-index: 2;
     position: relative;
-    font-size: 2rem;
+    /* This tells the header not to shrink */
+    flex-shrink: 0; 
 }
 
 /* --- 2. Main Content Wrapper --- */
@@ -51,7 +65,7 @@ body::before {
     flex-direction: column; 
     align-items: center;
     justify-content: center;
-    flex-grow: 1; /* This makes it take up all available space */
+    flex-grow: 1; /* This is now the most important line! It pushes the footer down. */
     z-index: 2;
     position: relative;
     width: 100%;
@@ -120,10 +134,12 @@ body::before {
     z-index: 2;
     position: relative;
     padding-bottom: 1rem;
+    /* This tells the footer not to shrink */
+    flex-shrink: 0; 
 }
 
 .vote-signature {
-    color: #e9ecf2; /* text-gray-400 */
+    color: #9CA3AF; /* text-gray-400 */
     font-size: 1.125rem; /* text-lg */
     font-weight: 700;
 }
