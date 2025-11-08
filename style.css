@@ -1,39 +1,28 @@
-/* --- Basic Setup & Fonts --- */
+/* --- Basic Setup & Fonts (Mobile-First) --- */
 body {
     font-family: 'Inter', sans-serif;
-    color: #ffffff; /* text-white */
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     
-    /* --- FIX 1 --- */
-    /* Changed from `justify-content: space-between;` */
-    /* This lets the content flow naturally from the top. */
-    justify-content: flex-start;
+    /* Center all content vertically as a group */
+    justify-content: center; 
+    align-items: center; /* Center horizontally */
     
-    /* --- FIX 2 --- */
-    /* Changed from `height: 100vh;` */
-    /* This lets the body be AT LEAST 100% tall, but grow if needed. */
     min-height: 100vh;
-    
-    min-height: 600px; /* Ensures layout doesn't break on short screens */
     padding: 1rem;
     margin: 0;
+    overflow-y: auto; /* Allow scrolling if needed */
+    box-sizing: border-box;
 
-    /* --- FIX 3 --- */
-    /* Removed `overflow: hidden;` */
-    /* This will re-enable scrolling on mobile if the content is too tall. */
-    overflow-y: auto;
-
-
-    /* --- Background Image (Same as before) --- */
-    background-image: url('AQIDAH AKHLAQ ADAB.jpg');
+    /* --- Background Image (Same) --- */
+    background-image: url('The_BG.png');
     background-size: cover;
     background-position: center center;
     position: relative;
-    box-sizing: border-box;
 }
 
-/* --- Overlay (Same as before) --- */
+/* --- Overlay (Same) --- */
 body::before {
     content: '';
     position: absolute;
@@ -41,78 +30,80 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(17, 24, 39, 0.9); /* bg-gray-900 at 90% opacity */
+    background-color: rgba(17, 24, 39, 0.9);
     z-index: 1;
 }
 
-/* --- 1. Header Styling --- */
+/* --- 1. Header Styling (Mobile) --- */
 .page-header {
     width: 100%;
     text-align: center;
-    color: #9CA3AF; /* text-gray-400 */
+    color: #cfd4ddbc; /* text-gray-400 */
     font-weight: 700;
     letter-spacing: 0.05em;
-    padding-top: 1rem;
     z-index: 2;
     position: relative;
-    /* This tells the header not to shrink */
-    flex-shrink: 0; 
+    /* Added space at the bottom */
+    margin-bottom: 2rem; 
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
 }
 
-/* --- 2. Main Content Wrapper --- */
+/* --- 2. Main Content Wrapper (Mobile) --- */
 .main-content {
     display: flex;
     flex-direction: column; 
     align-items: center;
     justify-content: center;
-    flex-grow: 1; /* This is now the most important line! It pushes the footer down. */
+    /* Removed flex-grow: 1; */
     z-index: 2;
     position: relative;
     width: 100%;
-    max-width: 1200px; /* Max width for large screens */
-    padding: 1rem 0;
+    max-width: 1200px;
+    padding: 0;
 }
 
-/* --- Slogan Styling --- */
+/* --- Slogan Styling (Mobile) --- */
 .slogan-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center-align on all screens */
+    align-items: center;
     font-weight: 900;
 }
 
 .slogan-static-line {
-    font-size: 1.875rem; /* 3xl */
-    line-height: 2.25rem;
-    color: #D1D5DB; /* text-gray-300 */
+    /* Made larger for mobile */
+    font-size: 2.25rem; /* 3xl */
+    line-height: 2.5rem;
+    color: #D1D5DB;
 }
 
 .slogan-animated-line {
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the animated line */
-    font-size: 1.875rem; /* 3xl */
-    line-height: 2.25rem;
+    justify-content: center;
+    /* Made larger for mobile */
+    font-size: 2.25rem; /* 3xl */
+    line-height: 2.5rem;
     color: #D1D5DB;
-    /* ADDED: This ensures the line stays together */
     white-space: nowrap; 
+    margin-top: 0.25rem; /* Added small space */
 }
 
 .slogan-static {
-    /* This is the "the SCI" text */
-    margin-left: 0.5rem;
-    /* ADDED: This tells the text not to shrink */
+    margin-left: 0.6rem;
     flex-shrink: 0; 
 }
 
-/* --- Slider Styling --- */
+/* --- Slider Styling (Mobile) --- */
 .slider-container {
     overflow: hidden;
-    height: 3rem; /* h-12 (shorter to match 3xl text) */
+    /* Sized for 2.25rem text */
+    height: 3.5rem; 
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    width: 220px;
+    width: 260px; /* Made wider for mobile */
     text-align: center;
 }
 
@@ -127,32 +118,33 @@ body::before {
     transition: all 0.4s cubic-bezier(0.85, 0, 0.15, 1);
 }
 
-/* --- 3. Footer Styling --- */
+/* --- 3. Footer Styling (Mobile) --- */
 .footer-content {
     width: 100%;
     text-align: center;
     z-index: 2;
     position: relative;
-    padding-bottom: 1rem;
-    /* This tells the footer not to shrink */
-    flex-shrink: 0; 
+    /* Added space at the top */
+    margin-top: 3rem; 
 }
 
 .vote-signature {
-    color: #9CA3AF; /* text-gray-400 */
-    font-size: 1.125rem; /* text-lg */
+    color: #cddcf6;
+    /* Made larger for mobile */
+    font-size: 1.25rem; /* text-xl */
     font-weight: 700;
 }
 
 .vote-date {
-    color: #34D399; /* text-emerald-400 */
-    font-size: 1rem;
+    color: #34D399;
+    /* Made larger for mobile */
+    font-size: 1.125rem; /* text-lg */
     font-weight: 700;
-    margin-top: 0.25rem;
+    margin-top: 0.5rem; /* More space */
 }
 
 
-/* --- Animation State Classes (Same as before) --- */
+/* --- Animation State Classes (Same) --- */
 .word-visible {
     transform: translateY(0%);
     opacity: 1;
@@ -168,19 +160,45 @@ body::before {
 
 /* --- Responsive Layout (Laptops / Desktops) --- */
 @media (min-width: 768px) {
+    
+    /* Re-add the "push footer down" layout for wide screens */
     body {
+        justify-content: space-between;
         padding: 2rem;
     }
 
-    /* Only changing font and slider sizes */
+    .page-header {
+        font-size: 1rem; /* text-base */
+        line-height: 1.5rem;
+        margin-bottom: 0; /* Remove mobile margin */
+    }
+
+    .main-content {
+        flex-grow: 1; /* This pushes footer down on desktop */
+        padding: 1rem 0;
+    }
+    
+    .footer-content {
+        margin-top: 0; /* Remove mobile margin */
+    }
+
+    /* Make text even bigger on desktop */
     .slogan-static-line,
     .slogan-animated-line {
-        font-size: 3rem; /* 5xl */
+        font-size: 3.75rem; /* 6xl */
         line-height: 1.1;
     }
 
     .slider-container {
-        height: 4rem; /* h-16 */
-        width: 330px;
+        height: 5rem;
+        width: 420px;
+    }
+
+    .vote-signature {
+        font-size: 1.5rem; /* text-2xl */
+    }
+
+    .vote-date {
+        font-size: 1.25rem; /* text-xl */
     }
 }
